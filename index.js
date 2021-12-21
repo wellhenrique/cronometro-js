@@ -7,21 +7,22 @@ pausar.addEventListener("click", pausarContagem);
 pausar.addEventListener("dblclick", resetarTempo);
 let i = 0;
 let contador = "";
-
-const contagem = () => {
-  tempo.innerHTML = i++;
-};
+tempo = 0;
 
 function iniciarContagem() {
-  contador = setInterval(contagem, 1000);
-  contador;
+  contador = setInterval(() => {
+    tempo.innerHTML = i++;
+  }, 1000);
+  iniciar.setAttribute("disabled", "");
 }
 
 function pausarContagem() {
   clearInterval(contador);
+  iniciar.removeAttribute("disabled", "");
 }
 
 function resetarTempo() {
   i = 0;
+  tempo.innerHTML = 0;
   contagem();
 }
